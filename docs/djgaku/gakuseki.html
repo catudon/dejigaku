@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>デジタル学生証</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+
+<style>
+  #sidebarMenu {
+    position: fixed;
+    top: 0;
+    left: -250px; 
+    width: 250px;
+    height: 100%;
+    background-color: #f8f9fa;
+    transition: left 0.3s ease;
+    z-index: 1050;
+    padding: 1rem;
+  }
+
+  #sidebarMenu.active {
+    left: 0;
+  }
+</style>
+<style>
+  #sidebarMenu .navbar-nav {
+    flex-direction: column;
+  }
+</style>
+
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <!-- ★ ① 三本線を最初に移動（左側） -->
+    <button class="navbar-toggler d-block" type="button" id="menuToggle">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- ★ ② ブランド名はその次（中央寄せしたければ ms-auto つけない） -->
+    <a class="navbar-brand fw-bold" href="djgaku.html">デジタル学生証</a>
+
+    <!-- ★ ③ メニュー本体 -->
+    <div id="sidebarMenu">
+  <button id="closeSidebar" class="btn btn-outline-secondary mb-3">✕ 閉じる</button>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="djgaku.html">
+        <i class="bi bi-house-door-fill me-2"></i> メイン
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="setting.html">
+        <i class="bi bi-gear-fill me-2"></i> 設定
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="gakuseki.html">
+        <i class="bi bi-mortarboard-fill me-2"></i> 学籍情報
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="logout.html">
+        <i class="bi bi-box-arrow-right me-2"></i> ログアウト
+      </a>
+    </li>
+  </ul>
+</div>
+
+</nav>
+
+
+
+
+
+<main class="container mt-5">
+  <h2>学籍情報</h2>
+  <ul>
+    <li>氏名：田中 太郎</li>
+    <li>学籍番号：12345678</li>
+    <li>学科：情報科学科</li>
+    <li>入学年度：2022年</li>
+  </ul>
+</main>
+
+<div class="d-flex justify-content-center mt-5">
+  <img id="toggleImage" src="スクリーンショット 2025-05-16 115709.png" class="img-fluid" alt="画像" style="cursor: pointer; width: 300px;">
+</div>
+
+<script>
+  const imageElement = document.getElementById("toggleImage");
+  const images = [
+    "スクリーンショット 2025-05-16 115709.png",
+    "スクリーンショット 2025-05-16 121025.png"
+  ];
+  let currentIndex = 0;
+
+  imageElement.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    imageElement.src = images[currentIndex];
+  });
+
+  const toggleBtn = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebarMenu');
+  const closeBtn = document.getElementById('closeSidebar');
+
+  toggleBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    sidebar.classList.remove('active');
+  });
+</script>
+
+
+
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
